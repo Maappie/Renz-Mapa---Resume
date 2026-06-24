@@ -99,11 +99,11 @@ The server should start on port `8080` by default. You can verify it by opening 
 
 To verify that the setup is working correctly, let's create a simple REST controller.
 
-1. Create a new file under `src/main/java/com/renzmapa/resume/controller/HelloController.java`.
+1. Create a new file under `src/main/java/com/renzmapa/resume_api/controller/HelloController.java`.
 2. Add the following Java code:
 
 ```java
-package com.renzmapa.resume.controller;
+package com.renzmapa.resume_api.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
