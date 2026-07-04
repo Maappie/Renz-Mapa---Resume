@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Explorer — Renz Mapa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/api-explorer.css">
+</head>
+<body>
+
+    <!-- ─── SIDEBAR ───────────────────────────────────────────── -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">RM<span class="dot">.</span></span>
+            <span class="sidebar-badge">API</span>
+        </div>
+
+        <div class="sidebar-search">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="endpoint-search" class="search-input" placeholder="Search endpoints...">
+        </div>
+
+        <nav class="sidebar-nav" id="sidebar-nav">
+            <!-- Profile Group -->
+            <div class="nav-group" data-group="profile">
+                <button class="nav-group-header active" id="group-profile">
+                    <i data-lucide="user" class="group-icon"></i>
+                    <span>Profile</span>
+                    <span class="group-count" id="count-profile">6</span>
+                    <i data-lucide="chevron-down" class="chevron"></i>
+                </button>
+                <div class="nav-group-items show" id="items-profile">
+                    <button class="endpoint-btn active" data-endpoint="get-latest">
+                        <span class="method-badge get">GET</span>
+                        <span class="endpoint-path">/profile/latest</span>
+                    </button>
+                    <button class="endpoint-btn" data-endpoint="get-all">
+                        <span class="method-badge get">GET</span>
+                        <span class="endpoint-path">/profile</span>
+                    </button>
+                    <button class="endpoint-btn" data-endpoint="get-by-id">
+                        <span class="method-badge get">GET</span>
+                        <span class="endpoint-path">/profile/{id}</span>
+                    </button>
+                    <button class="endpoint-btn" data-endpoint="create">
+                        <span class="method-badge post">POST</span>
+                        <span class="endpoint-path">/profile</span>
+                    </button>
+                    <button class="endpoint-btn" data-endpoint="patch-latest">
+                        <span class="method-badge patch">PATCH</span>
+                        <span class="endpoint-path">/profile/latest</span>
+                    </button>
+                    <button class="endpoint-btn" data-endpoint="patch-by-id">
+                        <span class="method-badge patch">PATCH</span>
+                        <span class="endpoint-path">/profile/{id}</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Features Group -->
+            <div class="nav-group" data-group="features">
+                <button class="nav-group-header" id="group-features">
+                    <i data-lucide="toggle-right" class="group-icon"></i>
+                    <span>Features</span>
+                    <span class="group-count" id="count-features">2</span>
+                    <i data-lucide="chevron-down" class="chevron"></i>
+                </button>
+                <div class="nav-group-items" id="items-features">
+                    <button class="endpoint-btn" data-endpoint="feat-get-all">
+                        <span class="method-badge get">GET</span>
+                        <span class="endpoint-path">/features</span>
+                    </button>
+                    <button class="endpoint-btn" data-endpoint="feat-get-by-id">
+                        <span class="method-badge get">GET</span>
+                        <span class="endpoint-path">/features/{id}</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Sidebar footer links -->
+        <div class="sidebar-footer">
+            <a href="/" class="sidebar-link" id="link-portfolio">
+                <i data-lucide="layout-template"></i> Portfolio
+            </a>
+            <a href="/settings.html" class="sidebar-link" id="link-settings">
+                <i data-lucide="settings"></i> Settings
+            </a>
+        </div>
+    </aside>
+
+    <!-- ─── MAIN ──────────────────────────────────────────────── -->
+    <main class="main-content">
+
+        <!-- Top bar -->
+        <header class="topbar">
+            <div>
+                <h1 class="page-title" id="panel-title">Get Latest Profile</h1>
+                <p class="page-desc" id="panel-desc">Returns the most recently created profile — the one shown on your portfolio.</p>
+            </div>
+            <div class="topbar-right">
+                <span class="env-badge" id="env-badge">
+                    <span class="env-dot"></span> localhost:8080
+                </span>
+            </div>
+        </header>
+
+        <!-- Request Panel -->
+        <section class="request-panel glass-panel">
+            <div class="request-bar">
+                <span class="method-pill" id="req-method">GET</span>
+                <div class="url-bar">
+                    <span class="url-base">/api</span>
+                    <input type="text" class="url-input" id="req-url" value="/profile/latest" spellcheck="false">
+                </div>
+                <button class="btn-send" id="btn-send">
+                    <i data-lucide="play" class="send-icon"></i>
+                    Send
+                </button>
+            </div>
+
+            <!-- Path params -->
+            <div class="params-section hidden" id="params-section">
+                <h3 class="section-label">Path Parameters</h3>
+                <div class="param-row" id="param-row">
+                    <label class="param-label" for="param-id">id</label>
+                    <input type="number" class="param-input" id="param-id" placeholder="1" value="1" min="1">
+                </div>
+            </div>
+
+            <!-- Request body -->
+            <div class="body-section hidden" id="body-section">
+                <div class="body-header">
+                    <h3 class="section-label">Request Body</h3>
+                    <button class="btn-mini" id="btn-fill-example">
+                        <i data-lucide="sparkles"></i> Fill Example
+                    </button>
+                </div>
+                <div class="editor-wrap">
+                    <textarea class="code-editor" id="req-body" spellcheck="false" rows="12" placeholder='{ "name": "..." }'></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- Response Panel -->
+        <section class="response-panel glass-panel" id="response-panel">
+            <div class="response-header">
+                <h3 class="section-label">Response</h3>
+                <div class="response-meta" id="response-meta">
+                    <span class="status-pill" id="res-status">—</span>
+                    <span class="timing" id="res-time">—</span>
+                </div>
+            </div>
+            <div class="response-body">
+                <pre class="code-output" id="res-body">Click "Send" to execute the request.</pre>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/js/api-explorer.js" defer></script>
+</body>
+</html>

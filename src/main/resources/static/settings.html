@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin settings — update your profile data.">
+    <title>Profile Settings — Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Shared design tokens -->
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/settings.css">
+</head>
+<body>
+
+    <!-- ─── SIDEBAR ───────────────────────────────────────────── -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">RM<span class="dot">.</span></span>
+            <span class="sidebar-label">Admin</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="/settings.html" class="nav-item active" id="nav-settings">
+                <i data-lucide="user-cog"></i>
+                Profile Settings
+            </a>
+            <a href="/api-explorer.html" class="nav-item" id="nav-api-explorer">
+                <i data-lucide="terminal"></i>
+                API Explorer
+            </a>
+            <a href="/" class="nav-item" id="nav-portfolio">
+                <i data-lucide="layout-template"></i>
+                View Portfolio
+            </a>
+            <a href="/admin" class="nav-item" id="nav-admin" target="_blank">
+                <i data-lucide="monitor-dot"></i>
+                Spring Admin
+            </a>
+        </nav>
+    </aside>
+
+    <!-- ─── MAIN CONTENT ──────────────────────────────────────── -->
+    <main class="main-content">
+
+        <!-- Top bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <h1 class="page-title">Profile Settings</h1>
+                <p class="page-subtitle">Update any field and hit save. Blank fields keep their current value.</p>
+            </div>
+            <div class="topbar-right">
+                <div class="status-badge" id="status-badge">
+                    <i data-lucide="circle" class="status-dot"></i>
+                    <span id="status-text">Loading...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Alert banner -->
+        <div class="alert-banner" id="alert-banner" role="alert" aria-live="polite"></div>
+
+        <!-- Settings form -->
+        <form class="settings-form" id="settings-form" novalidate>
+
+            <!-- Profile ID selector -->
+            <section class="form-section">
+                <div class="section-header">
+                    <i data-lucide="hash"></i>
+                    <h2>Profile Target</h2>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="profile-id" class="form-label">Profile ID <span class="required">*</span></label>
+                        <input type="number" id="profile-id" name="profileId" class="form-input"
+                               value="1" min="1" required>
+                        <span class="form-hint">The ID of the profile row to update. Usually 1.</span>
+                    </div>
+                    <div class="form-group form-group--action">
+                        <button type="button" class="btn btn-secondary" id="btn-load">
+                            <i data-lucide="download"></i> Load Current Data
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Basic info -->
+            <section class="form-section">
+                <div class="section-header">
+                    <i data-lucide="user"></i>
+                    <h2>Basic Information</h2>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="field-name" class="form-label">Name</label>
+                        <input type="text" id="field-name" name="name" class="form-input"
+                               placeholder="Leave blank to keep current value" autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="field-title" class="form-label">Title / Role</label>
+                        <input type="text" id="field-title" name="title" class="form-input"
+                               placeholder="Leave blank to keep current value">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="field-bio" class="form-label">Bio</label>
+                    <textarea id="field-bio" name="bio" class="form-textarea" rows="4"
+                              placeholder="Leave blank to keep current value"></textarea>
+                </div>
+            </section>
+
+            <!-- Contact info -->
+            <section class="form-section">
+                <div class="section-header">
+                    <i data-lucide="contact"></i>
+                    <h2>Contact Details</h2>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="field-email" class="form-label">Email</label>
+                        <input type="email" id="field-email" name="email" class="form-input"
+                               placeholder="Leave blank to keep current value" autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="field-phone" class="form-label">Phone</label>
+                        <input type="tel" id="field-phone" name="phone" class="form-input"
+                               placeholder="Leave blank to keep current value" autocomplete="tel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="field-location" class="form-label">Location</label>
+                    <input type="text" id="field-location" name="location" class="form-input"
+                           placeholder="Leave blank to keep current value">
+                </div>
+            </section>
+
+            <!-- Social links -->
+            <section class="form-section">
+                <div class="section-header">
+                    <i data-lucide="link"></i>
+                    <h2>Social Links</h2>
+                </div>
+                <p class="section-description">Enter one URL per line. Leave blank to keep current links.</p>
+                <div class="form-group">
+                    <label for="field-social" class="form-label">Links (one per line)</label>
+                    <textarea id="field-social" name="socialLinks" class="form-textarea" rows="4"
+                              placeholder="https://github.com/yourhandle&#10;https://linkedin.com/in/yourhandle"></textarea>
+                </div>
+            </section>
+
+            <!-- Actions -->
+            <div class="form-actions">
+                <button type="button" class="btn btn-ghost" id="btn-clear">
+                    <i data-lucide="eraser"></i> Clear Form
+                </button>
+                <button type="submit" class="btn btn-primary" id="btn-save">
+                    <i data-lucide="save"></i> Save Changes
+                </button>
+            </div>
+
+        </form>
+
+        <!-- Current data preview -->
+        <section class="preview-section">
+            <div class="preview-header">
+                <i data-lucide="eye"></i>
+                <h2>Current Saved Data</h2>
+            </div>
+            <pre class="preview-json" id="preview-json">Click "Load Current Data" to preview.</pre>
+        </section>
+
+    </main>
+
+    <script src="/js/settings.js" defer></script>
+</body>
+</html>
