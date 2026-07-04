@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Renz Mapa — Personal portfolio and resume. Developer, creator, and problem solver.">
+    <title>Renz Mapa — Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+    <!-- ─── NAV ─────────────────────────────────────────────── -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">RM<span class="dot">.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─────────────────────────────────────────────── -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-glow glow-1"></div>
+        <div class="hero-bg-glow glow-2"></div>
+        <div class="hero-content">
+            <div class="avatar-wrapper">
+                <div class="avatar-ring"></div>
+                <img src="images/avatar.png" alt="Renz Mapa" class="avatar-img" id="hero-avatar">
+            </div>
+            <div class="hero-text">
+                <p class="hero-eyebrow">Hello, I'm</p>
+                <h1 id="name">Renz Mapa</h1>
+                <p class="hero-role" id="title">Developer &amp; Creator</p>
+                <p class="hero-bio" id="bio">Building clean, purposeful things on the web.</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary" id="btn-view-projects">View Projects</a>
+                    <a href="#contact" class="btn btn-ghost" id="btn-contact">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <i data-lucide="chevrons-down" class="scroll-icon"></i>
+        </div>
+    </section>
+
+    <!-- ─── ABOUT ─────────────────────────────────────────────── -->
+    <section class="section about-section" id="about">
+        <div class="section-container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">A bit more about who I am</p>
+
+            <div class="about-grid">
+                <!-- Info card -->
+                <div class="glass-card about-info-card">
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <i data-lucide="map-pin" class="info-icon"></i>
+                            <div>
+                                <span class="info-label">Location</span>
+                                <span class="info-value" id="location">—</span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <i data-lucide="mail" class="info-icon"></i>
+                            <div>
+                                <span class="info-label">Email</span>
+                                <span class="info-value" id="email">—</span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <i data-lucide="phone" class="info-icon"></i>
+                            <div>
+                                <span class="info-label">Phone</span>
+                                <span class="info-value" id="phone">—</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Skills placeholder card -->
+                <div class="glass-card skills-card">
+                    <h3 class="card-heading">Skills &amp; Tools</h3>
+                    <div class="skill-tags" id="skills">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML / CSS</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+
+                <!-- Social links card -->
+                <div class="glass-card social-card">
+                    <h3 class="card-heading">Find Me Online</h3>
+                    <div class="social-container" id="socials">
+                        <!-- Dynamically populated social buttons -->
+                        <a href="#" class="social-btn" id="social-github" aria-label="GitHub">
+                            <i data-lucide="github"></i>
+                        </a>
+                        <a href="#" class="social-btn" id="social-linkedin" aria-label="LinkedIn">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                        <a href="#" class="social-btn" id="social-twitter" aria-label="Twitter">
+                            <i data-lucide="twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PROJECTS CAROUSEL ─────────────────────────────────── -->
+    <section class="section projects-section" id="projects">
+        <div class="section-container">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">Things I've built and shipped</p>
+
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow carousel-arrow--left" id="carousel-prev" aria-label="Previous project">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+
+                <div class="carousel-track-container">
+                    <div class="carousel-track" id="carousel-track">
+
+                        <!-- Project Card 1 — placeholder -->
+                        <article class="project-card" id="project-card-1">
+                            <div class="project-card-img-wrap">
+                                <div class="project-card-img-placeholder">
+                                    <i data-lucide="layout-dashboard"></i>
+                                </div>
+                            </div>
+                            <div class="project-card-body">
+                                <div class="project-tags">
+                                    <span class="project-tag">Tag</span>
+                                    <span class="project-tag">Tag</span>
+                                </div>
+                                <h3 class="project-title">Project Title</h3>
+                                <p class="project-desc">A short description of this project will go here. Explain what it does and why you built it.</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" id="project-1-demo">
+                                        <i data-lucide="external-link"></i> Live Demo
+                                    </a>
+                                    <a href="#" class="project-link" id="project-1-code">
+                                        <i data-lucide="github"></i> Source
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 2 — placeholder -->
+                        <article class="project-card" id="project-card-2">
+                            <div class="project-card-img-wrap">
+                                <div class="project-card-img-placeholder">
+                                    <i data-lucide="code-2"></i>
+                                </div>
+                            </div>
+                            <div class="project-card-body">
+                                <div class="project-tags">
+                                    <span class="project-tag">Tag</span>
+                                    <span class="project-tag">Tag</span>
+                                </div>
+                                <h3 class="project-title">Project Title</h3>
+                                <p class="project-desc">A short description of this project will go here. Explain what it does and why you built it.</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" id="project-2-demo">
+                                        <i data-lucide="external-link"></i> Live Demo
+                                    </a>
+                                    <a href="#" class="project-link" id="project-2-code">
+                                        <i data-lucide="github"></i> Source
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 3 — placeholder -->
+                        <article class="project-card" id="project-card-3">
+                            <div class="project-card-img-wrap">
+                                <div class="project-card-img-placeholder">
+                                    <i data-lucide="server"></i>
+                                </div>
+                            </div>
+                            <div class="project-card-body">
+                                <div class="project-tags">
+                                    <span class="project-tag">Tag</span>
+                                    <span class="project-tag">Tag</span>
+                                </div>
+                                <h3 class="project-title">Project Title</h3>
+                                <p class="project-desc">A short description of this project will go here. Explain what it does and why you built it.</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" id="project-3-demo">
+                                        <i data-lucide="external-link"></i> Live Demo
+                                    </a>
+                                    <a href="#" class="project-link" id="project-3-code">
+                                        <i data-lucide="github"></i> Source
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div><!-- /carousel-track -->
+                </div><!-- /carousel-track-container -->
+
+                <button class="carousel-arrow carousel-arrow--right" id="carousel-next" aria-label="Next project">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Carousel dots -->
+            <div class="carousel-dots" id="carousel-dots">
+                <button class="carousel-dot active" id="dot-0" aria-label="Go to slide 1"></button>
+                <button class="carousel-dot" id="dot-1" aria-label="Go to slide 2"></button>
+                <button class="carousel-dot" id="dot-2" aria-label="Go to slide 3"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CONTACT ─────────────────────────────────────────────── -->
+    <section class="section contact-section" id="contact">
+        <div class="section-container contact-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have a project in mind? Let's talk.</p>
+
+            <div class="glass-card contact-card">
+                <form class="contact-form" id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-name" class="form-label">Your Name</label>
+                            <input type="text" id="contact-name" name="name" class="form-input" placeholder="John Doe" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email" class="form-label">Your Email</label>
+                            <input type="email" id="contact-email" name="email" class="form-input" placeholder="john@example.com" autocomplete="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message" class="form-label">Message</label>
+                        <textarea id="contact-message" name="message" class="form-textarea" placeholder="Tell me about your project or just say hi..." rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-send" id="btn-send-message">
+                        <i data-lucide="send"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─────────────────────────────────────────────── -->
+    <footer class="footer">
+        <p class="footer-text">Designed &amp; built by <span class="footer-name">Renz Mapa</span></p>
+    </footer>
+
+    <script type="module" src="/js/main.js" defer></script>
+    <script src="/js/carousel.js" defer></script>
+</body>
+</html>
