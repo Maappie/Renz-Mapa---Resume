@@ -25,6 +25,40 @@ function populateProfileDOM(data) {
     const phoneEl = document.getElementById('phone');
     if (phoneEl) phoneEl.textContent = data.phone || '—';
 
+    // Socials
+    const githubBtn = document.getElementById('social-github');
+    if (githubBtn) {
+        githubBtn.href = data.github || '#';
+        githubBtn.target = data.github ? '_blank' : '';
+        githubBtn.rel = data.github ? 'noopener noreferrer' : '';
+    }
+
+    const linkedinBtn = document.getElementById('social-linkedin');
+    if (linkedinBtn) {
+        linkedinBtn.href = data.linkedin || '#';
+        linkedinBtn.target = data.linkedin ? '_blank' : '';
+        linkedinBtn.rel = data.linkedin ? 'noopener noreferrer' : '';
+    }
+
+    const facebookBtn = document.getElementById('social-facebook');
+    if (facebookBtn) {
+        facebookBtn.href = data.facebook || '#';
+        facebookBtn.target = data.facebook ? '_blank' : '';
+        facebookBtn.rel = data.facebook ? 'noopener noreferrer' : '';
+    }
+
+    // Skills & Tools
+    const skillsContainer = document.getElementById('skills');
+    if (skillsContainer && data.stack) {
+        skillsContainer.innerHTML = ''; // Clear fallback/static tags
+        data.stack.forEach(tech => {
+            const span = document.createElement('span');
+            span.className = 'skill-tag';
+            span.textContent = tech;
+            skillsContainer.appendChild(span);
+        });
+    }
+
     // Re-initialise Lucide Icons after dynamic DOM changes
     if (window.lucide) {
         window.lucide.createIcons();
