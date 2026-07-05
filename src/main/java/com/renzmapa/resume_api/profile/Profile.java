@@ -2,6 +2,7 @@ package com.renzmapa.resume_api.profile;
 
 import jakarta.persistence.*;
 import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "profiles")
@@ -17,25 +18,32 @@ public class Profile {
     private String phone;
     private String location;
     private String bio;
+    
+    private String github;
+    private String linkedin;
+    private String facebook;
 
-    // Stores the list as a comma-separated string in a single column
     @ElementCollection
-    @CollectionTable(name = "profile_social_links", joinColumns = @JoinColumn(name = "profile_id"))
-    @Column(name = "link")
-    private List<String> socialLinks;
+    @CollectionTable(name = "profile_stack", joinColumns = @JoinColumn(name = "profile_id"))
+    @Column(name = "tech")
+    private List<String> stack = new ArrayList<>();
 
     // Required by JPA
     protected Profile() {}
 
     public Profile(String name, String title, String email, String phone,
-                   String location, String bio, List<String> socialLinks) {
+                   String location, String bio, String github, String linkedin, String facebook,
+                   List<String> stack) {
         this.name = name;
         this.title = title;
         this.email = email;
         this.phone = phone;
         this.location = location;
         this.bio = bio;
-        this.socialLinks = socialLinks;
+        this.github = github;
+        this.linkedin = linkedin;
+        this.facebook = facebook;
+        this.stack = stack != null ? stack : new ArrayList<>();
     }
 
     // Getters
@@ -46,7 +54,10 @@ public class Profile {
     public String getPhone()             { return phone; }
     public String getLocation()          { return location; }
     public String getBio()               { return bio; }
-    public List<String> getSocialLinks() { return socialLinks; }
+    public String getGithub()            { return github; }
+    public String getLinkedin()          { return linkedin; }
+    public String getFacebook()          { return facebook; }
+    public List<String> getStack()       { return stack; }
 
     // Setters — used by the patch service to apply partial updates
     public void setName(String name)                     { this.name = name; }
@@ -55,5 +66,8 @@ public class Profile {
     public void setPhone(String phone)                   { this.phone = phone; }
     public void setLocation(String location)             { this.location = location; }
     public void setBio(String bio)                       { this.bio = bio; }
-    public void setSocialLinks(List<String> socialLinks) { this.socialLinks = socialLinks; }
+    public void setGithub(String github)                 { this.github = github; }
+    public void setLinkedin(String linkedin)             { this.linkedin = linkedin; }
+    public void setFacebook(String facebook)             { this.facebook = facebook; }
+    public void setStack(List<String> stack)             { this.stack = stack; }
 }

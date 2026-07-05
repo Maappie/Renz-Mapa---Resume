@@ -34,12 +34,21 @@ public class ProfileUpdateRequest {
     @Schema(description = "Short biography or intro", example = "I build things for the web.", nullable = true)
     private String bio;
 
+    @Schema(description = "GitHub profile link", example = "https://github.com/renzmapa", nullable = true)
+    private String github;
+
+    @Schema(description = "LinkedIn profile link", example = "https://linkedin.com/in/renzmapa", nullable = true)
+    private String linkedin;
+
+    @Schema(description = "Facebook profile link", example = "https://facebook.com/renzmapa", nullable = true)
+    private String facebook;
+
     @Schema(
-        description = "List of social media or portfolio URLs",
-        example = "[\"https://github.com/renzmapa\", \"https://linkedin.com/in/renzmapa\"]",
+        description = "List of technologies in the stack",
+        example = "[\"Java\", \"Spring Boot\", \"JavaScript\"]",
         nullable = true
     )
-    private List<String> socialLinks;
+    private List<String> stack;
 
     // ─── Getters ─────────────────────────────────────────────
     public String getName()                  { return name; }
@@ -48,7 +57,10 @@ public class ProfileUpdateRequest {
     public String getPhone()                 { return phone; }
     public String getLocation()              { return location; }
     public String getBio()                   { return bio; }
-    public List<String> getSocialLinks()     { return socialLinks; }
+    public String getGithub()                { return github; }
+    public String getLinkedin()              { return linkedin; }
+    public String getFacebook()              { return facebook; }
+    public List<String> getStack()           { return stack; }
 
     // ─── Setters (required for JSON deserialization) ──────────
     public void setName(String name)                     { this.name = name; }
@@ -57,5 +69,8 @@ public class ProfileUpdateRequest {
     public void setPhone(String phone)                   { this.phone = phone; }
     public void setLocation(String location)             { this.location = location; }
     public void setBio(String bio)                       { this.bio = bio; }
-    public void setSocialLinks(List<String> socialLinks) { this.socialLinks = socialLinks; }
+    public void setGithub(String github)                 { this.github = github; }
+    public void setLinkedin(String linkedin)             { this.linkedin = linkedin; }
+    public void setFacebook(String facebook)             { this.facebook = facebook; }
+    public void setStack(List<String> stack)             { this.stack = stack; }
 }

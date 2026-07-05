@@ -56,7 +56,10 @@ public class ProfileService {
             request.getPhone(),
             request.getLocation(),
             request.getBio(),
-            request.getSocialLinks()
+            request.getGithub(),
+            request.getLinkedin(),
+            request.getFacebook(),
+            request.getStack()
         );
         return profileRepository.save(profile);
     }
@@ -101,7 +104,10 @@ public class ProfileService {
         if (request.getPhone()       != null) existing.setPhone(request.getPhone());
         if (request.getLocation()    != null) existing.setLocation(request.getLocation());
         if (request.getBio()         != null) existing.setBio(request.getBio());
-        if (request.getSocialLinks() != null) existing.setSocialLinks(request.getSocialLinks());
+        if (request.getGithub()      != null) existing.setGithub(request.getGithub());
+        if (request.getLinkedin()    != null) existing.setLinkedin(request.getLinkedin());
+        if (request.getFacebook()    != null) existing.setFacebook(request.getFacebook());
+        if (request.getStack()       != null) existing.setStack(request.getStack());
 
         return profileRepository.save(existing);
     }
