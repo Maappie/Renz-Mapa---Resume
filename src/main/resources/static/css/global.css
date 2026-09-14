@@ -1,45 +1,162 @@
+/* ============================================================
+   global.css — Design tokens + reset
+   ------------------------------------------------------------
+   This is the SINGLE source of truth for colour, type, spacing,
+   radii, shadows and motion. Page stylesheets (profile.css,
+   settings.css, api-explorer.css) must consume these variables
+   and never hardcode raw hex values or one-off sizes.
+   ============================================================ */
+
 :root {
-    --bg:            #080c14;
-    --bg-surface:    #0d1220;
-    --card-bg:       rgba(15, 21, 36, 0.75);
-    --card-border:   rgba(255, 255, 255, 0.07);
-    --text-primary:  #eef0f6;
-    --text-secondary:#8a94a8;
-    --text-muted:    #4d5669;
-    --accent-blue:   #4f8ef7;
-    --accent-purple: #9b6dfa;
-    --accent-teal:   #2dd4bf;
-    --accent-grad:   linear-gradient(135deg, #4f8ef7 0%, #9b6dfa 100%);
-    --font-heading:  'Outfit', sans-serif;
-    --font-body:     'Inter', sans-serif;
-    --nav-h:         64px;
-    --section-pad:   120px;
-    --radius-card:   20px;
-    --radius-sm:     10px;
-    --shadow-card:   0 24px 64px rgba(0, 0, 0, 0.4);
-    --transition:    0.25s ease;
+    /* ─── Surfaces ──────────────────────────────────────────── */
+    --bg:              #07060e;
+    --bg-surface:      #0c0a18;
+    --bg-elevated:     #131028;
+    --card-bg:         rgba(19, 16, 40, 0.72);
+    --card-bg-solid:   #14112a;
+    --card-border:     rgba(255, 255, 255, 0.08);
+    --card-border-hi:  rgba(255, 255, 255, 0.16);
+
+    /* ─── Text ──────────────────────────────────────────────── */
+    --text-primary:    #f2f0fa;
+    --text-secondary:  #a29fbf;
+    --text-muted:      #7e7aa6;
+
+    /* ─── Accents ───────────────────────────────────────────── */
+    --accent-blue:     #4f8ef7;
+    --accent-purple:   #9b6dfa;
+    --accent-teal:     #2dd4bf;
+    --accent-violet:   #9b6dfa;
+    --accent-cyan:     #22d3ee;
+    --accent-lime:     #a3e635;
+    --accent-pink:     #f472b6;
+    --accent-amber:    #fbbf24;
+
+    /* Translucent accent washes — for tinted chips, rings and halos */
+    --violet-soft:     rgba(155, 109, 250, 0.14);
+    --cyan-soft:       rgba(34, 211, 238, 0.14);
+    --lime-soft:       rgba(163, 230, 53, 0.14);
+    --pink-soft:       rgba(244, 114, 182, 0.14);
+    --amber-soft:      rgba(251, 191, 36, 0.14);
+    --violet-line:     rgba(155, 109, 250, 0.35);
+    --cyan-line:       rgba(34, 211, 238, 0.35);
+    --lime-line:       rgba(163, 230, 53, 0.35);
+    --pink-line:       rgba(244, 114, 182, 0.35);
+
+    /* ─── Gradients ─────────────────────────────────────────── */
+    --accent-grad:     linear-gradient(135deg, #4f8ef7 0%, #9b6dfa 100%);
+    --grad-hero:       linear-gradient(115deg, #22d3ee 0%, #9b6dfa 48%, #f472b6 100%);
+    --grad-violet:     linear-gradient(135deg, #9b6dfa 0%, #4f8ef7 100%);
+    --grad-cyan:       linear-gradient(135deg, #22d3ee 0%, #2dd4bf 100%);
+    --grad-lime:       linear-gradient(135deg, #a3e635 0%, #2dd4bf 100%);
+    --grad-pink:       linear-gradient(135deg, #f472b6 0%, #9b6dfa 100%);
+
+    /* ─── Glows & shadows ───────────────────────────────────── */
+    --glow-violet:     0 0 48px rgba(155, 109, 250, 0.38);
+    --glow-cyan:       0 0 48px rgba(34, 211, 238, 0.32);
+    --glow-lime:       0 0 48px rgba(163, 230, 53, 0.28);
+    --glow-pink:       0 0 48px rgba(244, 114, 182, 0.30);
+    --shadow-card:     0 24px 64px rgba(0, 0, 0, 0.45);
+    --shadow-lift:     0 32px 80px rgba(0, 0, 0, 0.55);
+    --shadow-inset:    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    /* ─── Typography ────────────────────────────────────────── */
+    --font-heading:    'Outfit', 'Segoe UI', sans-serif;
+    --font-body:       'Inter', 'Segoe UI', sans-serif;
+    --font-mono:       'JetBrains Mono', 'Consolas', monospace;
+
+    --fs-eyebrow:      clamp(0.72rem, 0.9vw, 0.8rem);
+    --fs-body:         clamp(0.95rem, 1.05vw, 1.03rem);
+    --fs-lead:         clamp(1.02rem, 1.3vw, 1.18rem);
+    --fs-h3:           clamp(1.15rem, 1.8vw, 1.4rem);
+    --fs-h2:           clamp(2rem, 4.6vw, 3.1rem);
+    --fs-h1:           clamp(2.6rem, 8vw, 5.2rem);
+
+    /* ─── Spacing scale ─────────────────────────────────────── */
+    --space-1:         4px;
+    --space-2:         8px;
+    --space-3:         12px;
+    --space-4:         16px;
+    --space-5:         24px;
+    --space-6:         32px;
+    --space-7:         48px;
+    --space-8:         64px;
+    --space-9:         96px;
+
+    /* ─── Layout ────────────────────────────────────────────── */
+    --nav-h:           72px;
+    --shell-max:       1180px;
+    --shell-pad:       clamp(20px, 5vw, 48px);
+    --section-pad:     clamp(72px, 10vw, 120px);
+
+    /* ─── Radii ─────────────────────────────────────────────── */
+    --radius-card:     20px;
+    --radius-lg:       28px;
+    --radius-sm:       10px;
+    --radius-pill:     999px;
+
+    /* ─── Motion ────────────────────────────────────────────── */
+    --transition:      0.25s ease;
+    --ease-out:        cubic-bezier(0.22, 1, 0.36, 1);
+    --dur-fast:        0.18s;
+    --dur-base:        0.32s;
+    --dur-slow:        0.6s;
+
+    /* ─── Effects ───────────────────────────────────────────── */
+    --blur-glass:      blur(20px) saturate(140%);
+    --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
 /* ─── RESET ──────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-h) + var(--space-5));
+    -webkit-text-size-adjust: 100%;
+}
 
 body {
     background-color: var(--bg);
     font-family: var(--font-body);
+    font-size: var(--fs-body);
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
-    line-height: 1.6;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
 }
 
 img { display: block; max-width: 100%; }
 a  { text-decoration: none; color: inherit; }
-ul { list-style: none; }
-button { cursor: pointer; font-family: inherit; }
+ul, ol { list-style: none; }
+button { cursor: pointer; font-family: inherit; color: inherit; background: none; border: none; }
+input, textarea, select { font-family: inherit; font-size: inherit; color: inherit; }
+
+::selection { background: var(--violet-line); color: var(--text-primary); }
+
+/* Visible keyboard focus everywhere — never remove without a replacement */
+:focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
 
 /* ─── SCROLLBAR ──────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: rgba(79, 142, 247, 0.35); border-radius: 99px; }
+::-webkit-scrollbar-thumb {
+    background: var(--violet-line);
+    border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent-violet); }
+
+/* ─── MOTION PREFERENCES ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+}

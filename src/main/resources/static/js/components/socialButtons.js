@@ -1,40 +1,67 @@
 /**
- * Assigns an icon based on URL keywords.
- * @param {string} url 
- * @returns {string} Lucide icon name
+ * socialButtons.js — UI Component
+ *
+ * Responsibility: build the social icon buttons from a list of URLs.
+ * No fetching — main.js passes the links in.
  */
-function getIconForUrl(url) {
-    if (url.includes('github.com')) {
-        return 'github';
-    }
-    if (url.includes('linkedin.com')) {
-        return 'linkedin';
-    }
-    if (url.includes('twitter.com') || url.includes('x.com')) {
-        return 'twitter';
-    }
-    return 'external-link';
+
+/** Maps a URL to its Lucide icon name and accessible label. */
+const SOCIAL_MAP = [
+    { match: 'github.com',   icon: 'github',        label: 'GitHub' },
+    { match: 'linkedin.com', icon: 'linkedin',      label: 'LinkedIn' },
+    { match: 'facebook.com', icon: 'facebook',      label: 'Facebook' },
+    { match: 'twitter.com',  icon: 'twitter',       label: 'Twitter' },
+    { match: 'x.com',        icon: 'twitter',       label: 'X' },
+    { match: 'instagram.com', icon: 'instagram',    label: 'Instagram' },
+    { match: 'youtube.com',  icon: 'youtube',       label: 'YouTube' }
+];
+
+/**
+ * Resolves the icon + label for a social URL.
+ *
+ * @param {string} url
+ * @returns {{icon: string, label: string}} icon name and accessible label
+ */
+function describeUrl(url) {
+    const found = SOCIAL_MAP.find(entry => url.includes(entry.match));
+    return found || { icon: 'external-link', label: 'Website' };
 }
 
 /**
- * Dynamically builds and inserts social media buttons into a container.
- * @param {HTMLElement} container - The container element to append buttons to
- * @param {string[]} socialLinks - Array of social link URLs
+ * Renders social buttons into a container, replacing whatever was there.
+ *
+ * @param {HTMLElement} container - element to mount the buttons into
+ * @param {string[]} links - social profile URLs (falsy entries are skipped)
  */
-export function renderSocialLinks(container, socialLinks) {
+export function renderSocialLinks(container, links) {
     if (!container) return;
 
-    container.innerHTML = ''; // Clear fallback buttons
+    const urls = (links || []).filter(Boolean);
+    container.innerHTML = '';
 
-    socialLinks.forEach(link => {
-        const btn = document.createElement('a');
-        btn.href = link;
-        btn.target = '_blank';
-        btn.rel = 'noopener noreferrer';
-        btn.className = 'social-btn';
+    if (urls.length === 0) {
+        const note = document.createElement('p');
+        note.className = 'state-msg';
+        note.textContent = 'No social links yet.';
+        container.appendChild(note);
+        return;
+    }
 
-        const iconName = getIconForUrl(link);
-        btn.innerHTML = `<i data-lucide="${iconName}"></i>`;
-        container.appendChild(btn);
+    urls.forEach(url => {
+        const { icon, label } = describeUrl(url);
+
+        const button = document.createElement('a');
+        button.className = 'social-btn';
+        button.href = url;
+        button.target = '_blank';
+        button.rel = 'noopener noreferrer';
+        button.setAttribute('aria-label', label);
+        button.title = label;
+
+        const glyph = document.createElement('i');
+        glyph.setAttribute('data-lucide', icon);
+        button.appendChild(glyph);
+
+        container.appendChild(button);
     });
 }
