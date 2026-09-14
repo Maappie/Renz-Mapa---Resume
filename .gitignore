@@ -32,3 +32,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### pdf files on root ###
+*.pdf
