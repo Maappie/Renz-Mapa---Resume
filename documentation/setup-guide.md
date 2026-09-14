@@ -1,5 +1,8 @@
 # Local Server Setup Guide
 
+> **Quick start only.** For the full picture — prerequisites, every command, all URLs, the API
+> reference, project layout, database handling and troubleshooting — see [setup.md](setup.md).
+
 This guide provides instructions on how to run the Spring Boot backend server locally for this project.
 
 ## Running the Server
@@ -8,7 +11,8 @@ You can run the application using the Maven wrapper included in the repository.
 
 ### Prerequisites
 
-Ensure you have Java 17 or higher installed on your system. You can check your version by running:
+Ensure you have Java 21 or higher installed on your system (the build targets Java 21). You can
+check your version by running:
 
 ```powershell
 java -version
