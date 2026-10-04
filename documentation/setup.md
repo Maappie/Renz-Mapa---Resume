@@ -168,8 +168,9 @@ Refresh the portfolio and the change is live — the page reads everything from 
 ├── pom.xml                       Maven build + dependencies
 ├── mvnw / mvnw.cmd               Maven wrapper (no Maven install needed)
 ├── resume.db                     SQLite database (committed to git)
-├── CLAUDE.md                     Engineering rules entry point
-├── .agents/AGENTS.md             The full engineering rulebook
+├── CLAUDE.md                     Entry point for Claude Code (commands, rules map)
+├── .claude/rules/                The engineering rulebook (coding/, web/, cross-cutting)
+├── .agents/AGENTS.md             Index of the rulebook for other agents
 ├── documentation/                You are here
 └── src/
     ├── main/java/com/renzmapa/resume_api/
@@ -201,7 +202,7 @@ Refresh the portfolio and the change is live — the page reads everything from 
 
 Each feature slice holds its own entity, repository, service, controller, request DTO and seeder.
 See [boilerplate.md](boilerplate.md) for the pattern to copy when adding a feature, and
-[../.agents/AGENTS.md](../.agents/AGENTS.md) for the rules that govern all of it.
+[../.claude/rules/](../.claude/rules/) for the rules that govern all of it.
 
 > `bin/` is an IDE build-output mirror of the project. Ignore it — never edit files there.
 
